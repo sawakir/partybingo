@@ -21,23 +21,30 @@
 </head>
 
 <body>
-  <p>
-    <span id="pingo-number">00</span></p>
-    <div id="buttons">
-      <button id="start-button" class="btn btn-lg btn-default">Start</button>
-      <button id="reset-button" class="btn btn-lg btn-default">Reset</button>
+  <div class='wrapper'>
+    <div class="number">
+      <div>
+        <span id="pingo-number">00</span>
       </div>
-    <h3>Histories</h3>
-    <div id="histories" class="row histories"></div>
+    </div>
+    <div class="history">
+      <div id="histories" class="histories"></div>
+    </div>
+  </div>
+  <div class="buttons" id="buttons">
+    <button id="start-button" class="btn btn-lg btn-default">Start</button>
+    <button id="reset-button" class="btn btn-lg btn-default">Reset</button>
+  </div>
 
-    <audio id="drum" preload="auto">
-	<source src="asset/nc79078.mp3" type="audio/mp3">
-    </audio>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="asset/jquery-1.11.3.min.js "></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="asset/bootstrap-3.3.5-dist/js/bootstrap.min.js "></script>
-    <script src="asset/partybingo.js "></script>
-  </body>
+  <audio id="drum" preload="auto">
+    <source src="asset/nc79078.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="asset/jquery-1.11.3.min.js "></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="asset/bootstrap-3.3.5-dist/js/bootstrap.min.js "></script>
+  <script src="asset/partybingo.js "></script>
+</body>
+
 </html>
