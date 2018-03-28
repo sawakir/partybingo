@@ -1,9 +1,50 @@
 (function() {
+  var body = $("body");
   var pingoNumber = $("#pingo-number");
   var startButton = $("#start-button");
   var resetButton = $("#reset-button");
+  var goldButton = $("#gold-button");
   var historiesDiv = $("#histories");
   var drumAudio = $("#drum").get(0);
+  var flashTimer;
+
+  //star
+  function starMaker(n) {
+    var star = document.createElement("div");
+    star.className = "star";
+    star.style.display = "none";
+    star.textContent = "★";
+    for (var i = 0; i < n; i++) {
+      starSet(star);
+    }
+  }
+
+  //星のセッティングをする関数。
+  function starSet(clone) {
+    var starClone = clone.cloneNode(true);
+    var starStyle = starClone.style;
+
+    //星の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
+    starStyle.left = 100 * Math.random() + "%";
+    starStyle.animationDelay = 8 * Math.random() + "s";
+    starStyle.fontSize = ~~(30 * Math.random() + 20) + "px";
+    document.body.appendChild(starClone);
+
+    //星一つのアニメーションが終わったら新しい星を生成
+    starClone.addEventListener(
+      "animationend",
+      function() {
+        this.parentNode.removeChild(this);
+        var star = document.createElement("div");
+        star.className = "star";
+        star.textContent = "★";
+        starSet(star);
+      },
+      false
+    );
+  }
+
+  starMaker(30);
 
   // init histories
   var toBingoString = function(n) {
@@ -164,10 +205,50 @@
     startButton.text("Start");
     var n = removeNumberRamdom();
     pingoNumber.text(toBingoString(n));
+    if (body.hasClass("gold")) {
+      pingoNumber
+        .animate(
+          {
+            fontSize: "45vw"
+          },
+          300
+        )
+        .animate(
+          {
+            fontSize: "35vw"
+          },
+          300
+        )
+        .animate(
+          {
+            fontSize: "45vw"
+          },
+          300
+        )
+        .animate(
+          {
+            fontSize: "35vw"
+          },
+          300
+        )
+        .animate(
+          {
+            fontSize: "45vw"
+          },
+          300
+        )
+        .animate(
+          {
+            fontSize: "35vw"
+          },
+          300
+        );
+    }
     addHistory(n);
     drumAudio.pause();
   };
   var start = function() {
+    clearInterval(flashTimer);
     isStarted = true;
     startButton.text("Stop");
     drumAudio.currentTime = 0;
@@ -195,4 +276,16 @@
     }
   };
   resetButton.click(resetClicked);
+
+  // init gold button
+  var goldClicked = function() {
+    if (body.hasClass("gold")) {
+      body.removeClass("gold");
+      $(".star").css("display", "none");
+    } else {
+      body.addClass("gold");
+      $(".star").css("display", "block");
+    }
+  };
+  goldButton.click(goldClicked);
 })();

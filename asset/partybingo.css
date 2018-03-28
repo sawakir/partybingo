@@ -108,6 +108,9 @@ body {
 #pingo-number {
   font-size: 40vw;
   text-shadow: 0 12px 12px rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 4px rgb(0, 0, 0);
+  /* text-shadow: 0 1px #bbb, 0 2px #aaa, 0 3px #999, 0 4px #888, 0 5px #777,
+    0 6px #666, 0 7px #555, 0 8px #444, 0 9px #333, 0 10px 8px #000; */
 }
 #start-button {
   font-size: 20pt;
@@ -116,6 +119,10 @@ body {
 #reset-button {
   font-size: 20pt;
   width: 80pt;
+}
+#gold-button {
+  font-size: 20pt;
+  width: 60pt;
 }
 .wrapper {
   display: flex;
@@ -135,7 +142,9 @@ body {
   height: 10%;
 }
 .history-number {
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
   width: 64pt;
   font-size: 40pt;
   text-align: center;
@@ -143,9 +152,43 @@ body {
 .number {
   float: left;
   width: 50vw;
+  z-index: 1;
 }
 .history {
   float: right;
   width: 50vw;
   height: 100%;
+}
+
+.gold {
+  background-image: linear-gradient(
+    to top left,
+    #f7de05,
+    #da8e00,
+    #edac06,
+    #f7de05,
+    #ecb802,
+    #daaf08,
+    #b67b03
+  );
+}
+
+.star {
+  animation: kirakira 8s linear;
+  color: yellow;
+  display: inline-block;
+  height: 1em;
+  line-height: 1em;
+  position: fixed;
+  top: -1em;
+  z-index: 1000;
+}
+
+@keyframes kirakira {
+  0% {
+    transform: translateY(0) rotateY(0);
+  }
+  100% {
+    transform: translateY(calc(100vh + 1em)) rotateY(3600deg);
+  }
 }
