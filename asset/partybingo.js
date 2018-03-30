@@ -6,6 +6,7 @@
   var goldButton = $("#gold-button");
   var historiesDiv = $("#histories");
   var drumAudio = $("#drum").get(0);
+  var drumFinishAudio = $("#drum-finish").get(0);
   var flashTimer;
 
   //star
@@ -246,12 +247,15 @@
     }
     addHistory(n);
     drumAudio.pause();
+    drumFinishAudio.currentTime = 0;
+    drumFinishAudio.play();
   };
   var start = function() {
     clearInterval(flashTimer);
     isStarted = true;
     startButton.text("Stop");
     drumAudio.currentTime = 0;
+    drumFinishAudio.pause();
     drumAudio.play();
     rourletto();
   };
